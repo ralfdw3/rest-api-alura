@@ -1,5 +1,6 @@
 package med.voll.api.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +27,7 @@ import med.voll.api.domain.medico.MedicoRepository;
 
 @RestController
 @RequestMapping("medicos")
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 
 	@Autowired
@@ -71,7 +73,6 @@ public class MedicoController {
 	@GetMapping("/{id}")
 	public ResponseEntity detalhar(@PathVariable Long id) {
 		var medico = repository.getReferenceById(id);
-
 		return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
 	}
 }

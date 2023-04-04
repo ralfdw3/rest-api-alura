@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AutenticacaoService implements UserDetailsService {
+
     @Autowired
     private UsuarioRepository repository;
 
